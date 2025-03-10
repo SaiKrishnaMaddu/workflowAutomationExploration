@@ -91,3 +91,68 @@ _ **Open-source**: Fully open-source under MIT license
     - Use queue-based execution (Temporal’s Task Queues) to distribute workloads.
     - Use PostgreSQL sharding if needed for better performance.
 
+
+##
+##
+##
+
+
+
+
+- Schedule activity business requirements for Invoice generation
+    - Ability to schedule acticities with different frequencies(daily, weekly, monthly, quarterly, annually)
+    - Custom schedule patterns like every 1st day of a month etc
+    - Ability to generate the invoice before the date
+    - if needed ability to backdate the invoice
+    - support for multiple invoice templates with multiple 
+    - Should be able to show all the schedule activities on the dashboard
+    - and schedules should be paused or resumed as per the requirements
+    - Handling should be there for non busniess days & holidays
+        - either invoice should be generated and not sent to user
+        - or invoice should be generated after the non buiness days or holidays
+    - Notifications to admin on schedules or jobs
+        - like how many invoices processed in this scheduled job
+        - if any failed, failure reason 
+    - Manual trigger for failed ones or else a automated job with a different frequency for failed invoices
+    - Store foe the invoices nnot delivered to user
+        - retry on a scheduled basis on the same day
+
+##
+
+# Invoice generation activities business requirements and use cases
+### Invoice generation
+- Automated invoice generation with dynamic templates
+- Support for generating invoices with multiple currencies and tax rules
+- Generating the invoices as per the billing cycle
+    - Monthly
+    - Quarterly
+    - Half-yearly 
+    - Yearly
+    - As per the required dates
+- A invoice should be delivered it customer via multiple channels
+    - email invoice after generating
+    - invoice should be available on portal
+    - delivering through an API call
+- Bulk invoice generation
+- Invoice should be generated on prorated based
+- on Demand invoice generation
+- A new schedule for invoice generation should be there
+
+### Pending Cancellations
+- Detecting the invoices which are overdue
+- Warning notifications for cancelled policies
+- Grace period configuration for cancelling the invoice
+- Cancellation execution and generating the unpaid amount invoice
+
+### Collections Evalutions
+- outstanding balance analysis and generating invoice and sending notifications
+- Expoired policy identifications
+- collections prioritization
+- Escalation workflow
+
+### Other scheduled activities
+- Automated reconcilitation which is re verify the oustanding and invoiced amount
+- Batch processing for high volume invoices or at peak time period
+- late fee workflow to generate new invoice with late fee
+- Update the systems with invoice status paid or unpaid
+- Sending reminders on a scheuled basis
